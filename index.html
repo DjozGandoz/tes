@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Logbook AVSEC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login Petugas AVSEC</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Nama Petugas" required>
+      <input type="password" id="password" placeholder="Kata Sandi" required>
+      <button type="submit">Masuk</button>
+    </form>
+    <p id="loginError" style="color:red;"></p>
+  </div>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Cek login sederhana
+      if (username && password === "avsec123") {
+        localStorage.setItem("avsecUser", username);
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("loginError").innerText = "Login gagal. Periksa nama dan sandi.";
+      }
+    });
+  </script>
+</body>
+</html>
 
