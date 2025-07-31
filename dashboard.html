@@ -1,8 +1,58 @@
 <!DOCTYPE html>
 <html lang="id">
-<head><meta charset="UTF-8"><title>Dashboard</title></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logbook AVSEC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-  <h2>Selamat datang di Dashboard Logbook AVSEC</h2>
-  <p><a href="backend/logout.php">Logout</a></p>
+  <div class="dashboard">
+    <h2>Logbook Harian Petugas</h2>
+    <p>Selamat datang, <span id="namaPetugas"></span></p>
+
+    <form id="logForm">
+      <label>Tanggal:</label>
+      <input type="date" id="tanggal" required><br>
+      <label>Uraian Tugas:</label><br>
+      <textarea id="tugas" rows="4" required></textarea><br>
+      <label>Tanda Tangan Digital:</label><br>
+      <canvas id="ttdCanvas" width="300" height="150" style="border:1px solid #000;"></canvas><br>
+      <button type="button" onclick="clearCanvas()">Hapus TTD</button>
+      <button type="submit">Simpan Logbook</button>
+    </form>
+
+    <div id="logHasil"></div>
+    <button onclick="logout()">Keluar</button>
+  </div>
+
+  <script src="ttd.js"></script>
+  <script>
+    const nama = localStorage.getItem("avsecUser");
+    if (!nama) window.location.href = "index.html";
+    document.getElementById("namaPetugas").innerText = nama;
+
+    document.getElementById("logForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const tanggal = document.getElementById("tanggal").value;
+      const tugas = document.getElementById("tugas").value;
+      const ttdData = canvas.toDataURL();
+
+      const logData = {
+        petugas: nama,
+        tanggal,
+        tugas,
+        ttd: ttdData
+      };
+
+      localStorage.setItem("logbook_" + tanggal, JSON.stringify(logData));
+      document.getElementById("logHasil").innerText = "Data berhasil disimpan!";
+    });
+
+    function logout() {
+      localStorage.removeItem("avsecUser");
+      window.location.href = "index.html";
+    }
+  </script>
 </body>
 </html>
