@@ -2,93 +2,40 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard AVSEC</title>
+  <title>Menu AVSEC</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f0f2f5;
-    }
-    h1 {
+      font-family: Arial, sans-serif;
       text-align: center;
-      margin-bottom: 30px;
+      margin-top: 50px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, background-color 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      background-color: #e6f0ff;
-    }
-    .card img {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 10px;
-    }
-    .card a {
+
+    .menu-button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
       text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      display: block;
+      color: white;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .anggota { background-color: #4CAF50; } /* Hijau */
+    .logbook { background-color: #f44336; } /* Merah */
+    .sop { background-color: #2196F3; }     /* Biru */
+
+    .menu-button:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 
-  <h1>Dashboard AVSEC</h1>
+  <h2>Menu AVSEC</h2>
 
-  <div class="grid">
-    <div class="card">
-      <a href="laporan-harian.html">
-        <img src="img/laporan.png" alt="Laporan Harian">
-        Laporan Harian
-      </a>
-    </div>
-    <div class="card">
-      <a href="laporan-mingguan.html">
-        <img src="img/mingguan.png" alt="Laporan Mingguan">
-        Laporan Mingguan
-      </a>
-    </div>
-    <div class="card">
-      <a href="laporan-bulanan.html">
-        <img src="img/bulanan.png" alt="Laporan Bulanan">
-        Laporan Bulanan
-      </a>
-    </div>
-    <div class="card">
-      <a href="rekapitulasi.html">
-        <img src="img/rekap.png" alt="Rekapitulasi">
-        Rekapitulasi
-      </a>
-    </div>
-    <div class="card">
-      <a href="grafik.html">
-        <img src="img/grafik.png" alt="Grafik">
-        Grafik
-      </a>
-    </div>
-    <div class="card">
-      <a href="tentang.html">
-        <img src="img/info.png" alt="Tentang Kami">
-        Tentang Kami
-      </a>
-    </div>
-  </div>
+  <a href="anggota.html" class="menu-button anggota">Anggota</a>
+  <a href="logbook.html" class="menu-button logbook">Logbook</a>
+  <a href="sop.html" class="menu-button sop">SOP</a>
 
 </body>
 </html>
